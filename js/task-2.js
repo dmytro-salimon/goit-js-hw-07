@@ -27,3 +27,22 @@ const images = [
     alt: 'Zebras on Zebra',
   },
 ];
+
+const createGalleryCard = imageInfo => {
+  return `
+  <li class="gallery-item">
+    <img src="${imageInfo.url}" alt="${imageInfo.alt}" style="display: block; max-width: 100%; height: auto; border-radius: 10px;">
+  </li>
+  `;
+};
+
+const galleryCardTemplate = images.map(imageInfo => createGalleryCard(imageInfo)).join('');
+
+const galleryList = document.querySelector(".gallery");
+
+galleryList.insertAdjacentHTML("beforeend", galleryCardTemplate);
+
+galleryList.style.display = "flex";
+galleryList.style.justifyContent = "center";
+galleryList.style.gap = "20px";
+galleryList.style.padding = "0";
